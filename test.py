@@ -11,7 +11,7 @@ decoded_texts_path = Path(__file__).parent / 'decoded'
 encoded_texts_path = Path(__file__).parent / 'encoded'
 original_texts_path = Path(__file__).parent / 'original' 
 
-exclude = ["empty.asc", "a10.asc"]
+exclude = ["empty.asc", "a10.asc", "s.asc"]
 
 if not Path(myunzip_path).is_file() or not Path(myzip_path).is_file():
   raise FileNotFoundError("Please set your myunzip/myzip path")
