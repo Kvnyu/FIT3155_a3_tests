@@ -35,7 +35,7 @@ def test(exclude=[], window: int = 4, lookahead: int = 6):
   for file_path in encoded_file_paths:
     command = f'python {myunzip_path} {file_path} {decoded_texts_path}'
     result = run(command.split(' '))
-    print(f'Encoding: {file_path.name}')
+    print(f'Decoding: {file_path.name}')
     if result.returncode != 0:
       raise Exception(f"Error with file {file_path.name} during decoding")
 
@@ -46,7 +46,7 @@ def test(exclude=[], window: int = 4, lookahead: int = 6):
   for file_path in decoded_file_paths:
     original_file_path = original_texts_path / file_path.name
     are_files_same = cmp(original_file_path, file_path, shallow=False)
-    print(f'Encoding: {file_path.name}')
+    print(f'Comparing: {file_path.name}')
     if not are_files_same:
       raise Exception(f"Error with file {file_path.name} during decoding")
 
