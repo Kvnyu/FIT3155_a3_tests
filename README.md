@@ -1,5 +1,7 @@
 ## Testing helpers for Assignment 3 Question 2
  - The testing code is located in `test.py`
+ - NOTE: Some of the tests are outside the scope of the assignment. For example; `empty.asc`, `a10.asc`, and `s.asc`. These have been added to the excluded array though so they will not be tested if you run the tests 
+
  - You'll need to make a slight modification to your `myunzip.py` and `myzip.py` to write to a custom output path so that they can be called like:
  ```
 
