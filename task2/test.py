@@ -12,7 +12,9 @@ decoded_texts_path = Path(__file__).parent / 'decoded'
 encoded_texts_path = Path(__file__).parent / 'encoded'
 original_texts_path = Path(__file__).parent / 'original'
 
-exclude = ["empty.asc", "a10.asc", "s.asc"]
+# exclude = ["empty.asc", "a10.asc", "s.asc", "random_2.asc", "ipsum.asc", "empty.asc", "x.asc", "new_x.asc"]
+exclude = []
+exclude_bin = [filename + ".bin" for filename in exclude]
 print(Path.cwd())
 
 if not Path(myunzip_path).is_file() or not Path(myzip_path).is_file():
@@ -34,7 +36,7 @@ def test(exclude=[], window: int = 4, lookahead: int = 6):
   [move(file, encoded_texts_path / file.name) for file in Path.cwd().glob("*.asc.bin")]
   all_encoded_texts = encoded_texts_path.glob("*.asc.bin")
   encoded_file_paths = [file for file in all_encoded_texts if file.is_file()
-                        and file.name not in exclude]
+                        and file.name not in exclude_bin]
 
   # Decode files
   for file_path in encoded_file_paths:
@@ -45,7 +47,7 @@ def test(exclude=[], window: int = 4, lookahead: int = 6):
       raise Exception(f"Error with file {file_path.name} during decoding")
 
   [move(file, decoded_texts_path / file.name) for file in Path.cwd().glob("*.asc")]
-  decoded_file_paths = [file for file in Path.cwd().glob(
+  decoded_file_paths = [file for file in decoded_texts_path.glob(
       "*.asc") if file.is_file() and file.name not in exclude]
 
   # Compare files
